@@ -2,6 +2,7 @@ var express = require('express');
 var body_parser = require('body-parser');
 var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
+var ObjectId = require('mongodb').ObjectId;
 var app = express();
 
 app.use(express.static('public'));
@@ -23,7 +24,6 @@ console.log('We are connected');
 });
 
 var shoes = mongoose.Schema({
-//    id : Number,
     color : String,
     brand : String,
     price : Number,
@@ -97,6 +97,25 @@ app.get('/api/shoes/brand/:brandname/size/:size', function(req, res){
         size: size
     }, function(err, result){
         if (err){
+            console.log(err)
+        } else {
+            res.json(result)
+        }
+    })
+});
+
+app.post('/api/shoes/sold/:id', function(req, res){
+    var id = req.params.id;
+    shoeModel.findOneAndUpdate({
+        _id: ObjectId(id)
+    }, 
+    {
+        $inc: {in_stock: - 1}
+    },
+    {
+        upsert: false
+    }, function(err, result){
+        if(err){
             console.log(err)
         } else {
             res.json(result)
