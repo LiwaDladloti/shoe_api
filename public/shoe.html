@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
+    <link rel = 'stylesheet' type = 'text/css' href = 'shoe.css'>
+</head>
+<body>
+    
+    <div class="output"></div>
+    
+    <script type="text/x-handlebars-template" class = 'stockTemplate'>
+        <table>
+            <thead>
+                <th>Brand</th>
+                <th>Colour</th>
+                <th>Size</th>
+                <th>Quantity in stock</th>
+                <th>Shoe price</th>
+                <th>Purchase</th>
+            </thead>
+            {{#each newShoe}}
+            <tbody>
+                <td>{{brand}}</td>
+                <td>{{color}}</td>
+                <td>{{size}}</td>
+                <td>{{in_stock}}</td>
+                <td>R{{price}}</td>
+                <td>{{this.Purchase}}<button type="submit" value={{_id}} id="buy" onclick="sell('{{_id}}')">Buy</button></td>
+            </tbody>
+            {{/each}}
+        </table>
+    </script>
+    
+    <script type = 'text/x-handlebars-template' class = 'template'>
+<!--        <input type = 'text' list = 'shoeBrand'>-->
+            <datalist id = 'brands'>
+                {{#each brands}}
+                <option>{{this}}</option>
+                {{/each}}
+            </datalist>
+            <datalist id = 'colors'>
+                {{#each colors}}
+                <option>{{this}}</option>
+                {{/each}}
+            </datalist>
+            <datalist id = 'sizes'>
+                {{#each sizes}}
+                <option>{{this}}</option>
+                {{/each}}
+            </datalist>
+            
+
+    </script>
+    
+<div id = 'page'>
+    <h3>Search shoe brand:</h3>
+    <input type = 'text' list = 'brands' placeholder = 'Shoe brand' id = 'brandDrop'>
+    <div id = 'dropDowns'>
+    
+    </div>
+    <h3>Search shoe colour:</h3>
+    <input type = 'text' list = 'colors' placeholder = 'Shoe colour' id = 'colourDrop'>
+    <div id = 'dropDowns'>
+    
+    </div>
+    <h3>Search shoe size:</h3>
+    <input type = 'text' list = 'sizes' placeholder = 'Shoe size' id = 'sizeDrop'>
+    <div id = 'dropDowns'>
+    <hr>
+        <button id = 'checkStock' type = "submit"> Check Stock! </button>
+    </div>
+    <hr>
+    <button id="btn">See all Stock</button>
+    <hr>
+</div>
+    <hr>
+    
+    <div id = 'stockInfo'>
+
+    </div>
+    
+<div id = 'addingStock'>
+    <p>Staff Only</p>
+    <input type = 'text' placeholder = 'Add brand' id = 'newBrand' name = 'brand'>
+    <hr>
+    <input type = 'text' placeholder = 'Add colour' id = 'newColour' name = "color">
+    <hr>
+    <input type = 'text' placeholder = 'Add size' id = 'newSize' name = "size">
+    <hr>
+    <input type = 'text' placeholder = 'Add quanity in stock' id = 'newQuantity' name="in_stock">
+    <hr>
+    <input type = 'text' placeholder = 'Add price' id = 'newPrice' name="price">
+    <hr>
+    <button id = 'addStock'>Add Stock</button>
+</div>
+</body>
+<script src="shoe.js" charset="utf-8"></script>
+</html>

@@ -1,0 +1,80 @@
+body {
+    background: radial-gradient(white, black) no-repeat;
+    height: 100%;
+}
+#head {
+    text-align: center;
+    background: radial-gradient(#cec6c6, rgba(255, 255, 255, 0.8));
+    font-family: Roboto;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+h1 {
+    font-size: 50px;
+}
+#slideShow {
+    text-align: center;
+    background: radial-gradient(#c1b8b8, white);
+    width: 100%;
+    margin-top: 12em;
+}
+#slideShow img{
+    transition: width 1s, height 1s;
+}
+#slideShow img:hover {
+    width: 400px;
+    height: 375px;
+}
+.slides {
+    display: none;
+}
+#page {
+    background: radial-gradient(#b19393, white); 
+    margin-left: 8em;
+    margin-right: 8em;
+    text-align: center;
+    margin-top: 2em;
+    padding-bottom: 5em;
+    padding-top: 1em;
+}
+input {
+    text-align: center;
+    font-size: 18px;
+}
+hr {
+    visibility: hidden;
+}
+#stockInfo {
+    margin-top: 2em;
+    background: radial-gradient(silver, white);
+}
+table, td, th {    
+    border: 1px solid #ddd;
+    text-align: left;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    padding: 15px;
+}
+/*
+#addingStock {
+    background: radial-gradient(#222, white);
+    text-align: center;
+    margin-top: 2%;
+    padding-top: 1%;
+    padding-bottom: 2%;
+    display: none;
+}
+*/
+#btn {
+    margin-top: 2%;
+    text-align: center;
+}
+p {
+    font-size: 25px;
+    color: red;
+}
