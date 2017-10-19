@@ -10,7 +10,7 @@
     <div class="output"></div>
     
     <script type="text/x-handlebars-template" class = 'stockTemplate'>
-        <table>
+        <table id="shoeList">
             <thead>
                 <th>Brand</th>
                 <th>Colour</th>
@@ -26,7 +26,7 @@
                 <td>{{size}}</td>
                 <td>{{in_stock}}</td>
                 <td>R{{price}}</td>
-                <td>{{this.Purchase}}<button type="submit" value={{_id}} id="buy" onclick="sell('{{_id}}')">Buy</button></td>
+                <td>{{this.Purchase}}<button type="submit" value={{_id}} id="buy">Buy</button></td>
             </tbody>
             {{/each}}
         </table>

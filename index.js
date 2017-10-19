@@ -69,7 +69,7 @@ app.post('/api/shoes', function(req, res){
         }, function(err, shoeResults){
         if(err){
         return err
-        } 
+        }
             res.json({shoeResults})
         })
         }
@@ -200,22 +200,9 @@ app.post('/api/shoes/sold/:id', function(req, res){
     }, function(err, result){
         if(err){
             console.log(err)
-        } else {
-            res.json(result)
+        } if(result.in_stock <= 0){
+            result.remove()
+            res.json({result})
         }
     })
 });
-
-//app.get('/api/callajax', function(req, res){
-//    $(document).ready(function(){
-//        $.ajax({
-//            url: "http://localhost:8082/api/shoes",
-//            type: 'get',
-//            data: JSON.stringify(req),
-//            contentType: 'application/json',
-//            fail: function (xhr, textStatus, errorThrown) {
-//                console.log(errorThrown, textStatus, xhr)
-//            }
-//        })
-//    });
-//});
