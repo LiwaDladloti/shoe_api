@@ -14,5 +14,12 @@
     "express": "^4.15.4",
     "mongoose": "^4.11.7",
     "express-handlebars": "*"
+  },
+"repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiwaDladloti/shoe_api"
+  },
+"bugs": {
+    "url": "https://github.com/LiwaDladloti/shoe_api/issues"
   }
 }
