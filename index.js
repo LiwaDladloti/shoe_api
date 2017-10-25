@@ -40,9 +40,9 @@ var shoes = mongoose.Schema({
 
 var shoeModel = mongoose.model('shoeApi', shoes);
 
-app.get('/', function(req, res){
-    res.render('shoe')
-})
+//app.get('/', function(req, res){
+//    res.render('shoe')
+//})
 
 app.post('/api/shoes', function(req, res){
     var storeShoes = req.body
