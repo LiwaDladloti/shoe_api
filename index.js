@@ -17,7 +17,7 @@ app.use(function(req, res, next) {
   next();
 })
 
-app.listen(8082, function(){
+app.listen(process.env.PORT || 8082, function(){
     console.log('app running on port 8082')
 });
 
