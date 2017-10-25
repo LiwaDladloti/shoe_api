@@ -2,11 +2,13 @@ var output = document.querySelector('.output');
 
 var stockTemplate = document.querySelector('.stockTemplate').innerHTML;
 var temp = Handlebars.compile(stockTemplate);
-    
+
+
+//buying a shoe
 $(document).on('click','#buy',function(){
     alert( 'success' );
         $.post(
-        "http://localhost:8082/api/shoes/sold/" + $('#buy').val(), 
+        "/api/shoes/sold/" + $('#buy').val(), 
         function(data) {
             
         });
@@ -20,7 +22,7 @@ var shoeBrand = document.querySelector('#shoeBrand');
 
 $(document).ready(function(){
     
-    $.get({url: "http://localhost:8082/api/shoes", success: function(result){
+    $.get({url: "/api/shoes", success: function(result){
                 document.getElementById('stockInfo').innerHTML = temp({newShoe: result});
             }}).fail(function(jqXHR){
                 console.log(jqXHR)
@@ -28,7 +30,7 @@ $(document).ready(function(){
     
     
     $("#btn").click(function(){
-        $.get({url: "http://localhost:8082/api/shoes", success: function(result){
+        $.get({url: "/api/shoes", success: function(result){
 //            output.innerHTML = JSON.stringify(result);
 //            console.log(result)
             document.getElementById('stockInfo').innerHTML = temp({newShoe: result});
@@ -38,7 +40,7 @@ $(document).ready(function(){
         });
     }); 
     
-    $.get({url: "http://localhost:8082/api/shoes", success: function(stock){
+    $.get({url: "/api/shoes", success: function(stock){
             var uniqueBrands = {};
             var uniqueColors = {};
             var uniqueSizes = {};
@@ -77,9 +79,7 @@ $(document).ready(function(){
                             price : newPrice.value
                         };
         var stock = newList;
-            $.post({url: "http://localhost:8082/api/shoes", type: 'POST', data: newList, dataType: 'application/json', success: function(stock){
-    //            newStock.push(stock);
-    //            console.log(newList)
+            $.post({url: "/api/shoes", type: 'POST', data: newList, dataType: 'application/json', success: function(stock){
                 alert('Stock added successfully')
                 document.getElementById('stockInfo').innerHTML = temp({newShoe: shoeResults.stock});
             }}).fail(function(jqXHR){
@@ -95,38 +95,38 @@ $(document).ready(function(){
         var displayInfo = [];
         
             if(brandDrop !== '' && sizeDrop == '' && colourDrop == ''){
-                $.ajax({url: "http://localhost:8082/api/shoes/brand/" + brandDrop, type: 'GET', success: function(results){
+                $.ajax({url: "/api/shoes/brand/" + brandDrop, type: 'GET', success: function(results){
                     console.log(results)
                 document.getElementById('stockInfo').innerHTML = temp({newShoe: results.result})
             }}).fail(function(jqXHR){
             console.log(jqXHR)
         })} else if (sizeDrop == '' && brandDrop == '' && colourDrop !== ''){
-                $.ajax({url: "http://localhost:8082/api/shoes/colour/" + colourDrop, type: 'GET', success: function(results){
+                $.ajax({url: "/api/shoes/colour/" + colourDrop, type: 'GET', success: function(results){
                 document.getElementById('stockInfo').innerHTML = temp({newShoe: results.result})
                 }}).fail(function(jqXHR){
                 console.log(jqXHR)
             })} else if (sizeDrop !== '' && brandDrop == '' && colourDrop == ''){
-                $.ajax({url: "http://localhost:8082/api/shoes/size/" + sizeDrop, type: 'GET', success: function(results){
+                $.ajax({url: "/api/shoes/size/" + sizeDrop, type: 'GET', success: function(results){
                 document.getElementById('stockInfo').innerHTML = temp({newShoe: results.sizeResult})
                 }}).fail(function(jqXHR){
                 console.log(jqXHR)
             })} else if (brandDrop !== '' && sizeDrop == '' && colourDrop !== ''){
-            $.ajax({url: "http://localhost:8082/api/shoes/colour/" + colourDrop + "/brand/" + brandDrop, type: 'GET', success: function(results){
+            $.ajax({url: "/api/shoes/colour/" + colourDrop + "/brand/" + brandDrop, type: 'GET', success: function(results){
                 document.getElementById('stockInfo').innerHTML = temp({newShoe: results.result})
                 }}).fail(function(jqXHR){
                 console.log(jqXHR)
         })} else if (brandDrop == '' && sizeDrop !== '' && colourDrop !== ''){
-            $.ajax({url: "http://localhost:8082/api/shoes/colour/" + colourDrop + "/size/" + sizeDrop, type: 'GET', success: function(results){
+            $.ajax({url: "/api/shoes/colour/" + colourDrop + "/size/" + sizeDrop, type: 'GET', success: function(results){
                 document.getElementById('stockInfo').innerHTML = temp({newShoe: results.result})
                 }}).fail(function(jqXHR){
                 console.log(jqXHR)
         })} else if (brandDrop !== '' && sizeDrop !== '' && colourDrop == ''){
-            $.ajax({url: "http://localhost:8082/api/shoes/brand/" + brandDrop + "/size/" + sizeDrop, type: 'GET', success: function(results){
+            $.ajax({url: "/api/shoes/brand/" + brandDrop + "/size/" + sizeDrop, type: 'GET', success: function(results){
                 document.getElementById('stockInfo').innerHTML = temp({newShoe: results.result})
                 }}).fail(function(jqXHR){
                 console.log(jqXHR)
         })} else if (brandDrop !== '' && sizeDrop !== '' && colourDrop !== ''){
-            $.ajax({url: "http://localhost:8082/api/shoes/brand/" + brandDrop + "/size/" + sizeDrop + /colour/ + colourDrop, type: 'GET', success: function(results){
+            $.ajax({url: "/api/shoes/brand/" + brandDrop + "/size/" + sizeDrop + /colour/ + colourDrop, type: 'GET', success: function(results){
                 document.getElementById('stockInfo').innerHTML = temp({newShoe: results.result})
                 }}).fail(function(jqXHR){
                 console.log(jqXHR)
